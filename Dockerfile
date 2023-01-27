@@ -44,61 +44,71 @@ ENV PATH="/root/.asdf/shims:/root/.asdf/bin:${PATH}"
 ARG GOLANG_VERSION="1.19.5"
 ENV GOLANG_VERSION=${GOLANG_VERSION}
 RUN asdf plugin add golang \
-  && asdf install golang "${GOLANG_VERSION}"
+  && asdf install golang "${GOLANG_VERSION}" \
+  && asdf global golang "${GOLANG_VERSION}" \
 
 # Install golangci-lint. Get versions using 'asdf list all golangci-lint'
 ARG GOLANGCILINT_VERSION="1.50.1"
 ENV GOLANGCILINT_VERSION=${GOLANGCILINT_VERSION}
 RUN asdf plugin add golangci-lint \
-  && asdf install golangci-lint "${GOLANGCILINT_VERSION}"
+  && asdf install golangci-lint "${GOLANGCILINT_VERSION}" \
+  && asdf global golangci-lint "${GOLANGCILINT_VERSION}"
 
 # Install python. Get versions using 'asdf list all python'
 ARG PYTHON_VERSION="3.11.1"
 ENV PYTHON_VERSION=${PYTHON_VERSION}
 RUN asdf plugin add python \
-  && asdf install python "${PYTHON_VERSION}"
+  && asdf install python "${PYTHON_VERSION}" \
+  && asdf global python "${PYTHON_VERSION}"
 
 # Install hadolint. Get versions using 'asdf list all hadolint'
 ARG HADOLINT_VERSION="2.12.0"
 ENV HADOLINT_VERSION=${HADOLINT_VERSION}
 RUN asdf plugin add hadolint \
-  && asdf install hadolint "${HADOLINT_VERSION}"
+  && asdf install hadolint "${HADOLINT_VERSION}" \
+  && asdf global hadolint "${HADOLINT_VERSION}"
 
 # Install pre-commit. Get versions using 'asdf list all pre-commit'
 ARG PRE_COMMIT_VERSION="3.0.1"
 ENV PRE_COMMIT_VERSION=${PRE_COMMIT_VERSION}
 RUN asdf plugin add pre-commit \
-  && asdf install pre-commit "${PRE_COMMIT_VERSION}"
+  && asdf install pre-commit "${PRE_COMMIT_VERSION}" \
+  && asdf global pre-commit "${PRE_COMMIT_VERSION}"
 
 # Install Terraform. Get versions using 'asdf list all terraform'
 ARG TERRAFORM_VERSION="1.3.7"
 ENV TERRAFORM_VERSION=${TERRAFORM_VERSION}
 RUN asdf plugin add terraform \
-  && asdf install terraform "${TERRAFORM_VERSION}"
+  && asdf install terraform "${TERRAFORM_VERSION}" \
+  && asdf global terraform "${TERRAFORM_VERSION}"
 
 # Install tflint. Get versions using 'asdf list all tflint'
 ARG TFLINT_VERSION="0.44.1"
 ENV TFLINT_VERSION=${TFLINT_VERSION}
 RUN asdf plugin add tflint \
-  && asdf install tflint "${TFLINT_VERSION}"
+  && asdf install tflint "${TFLINT_VERSION}" \
+  && asdf global tflint "${TFLINT_VERSION}"
 
 # Install tfsec. Get versions using 'asdf list all tfsec'
 ARG TFSEC_VERSION="1.28.1"
 ENV TFSEC_VERSION=${TFSEC_VERSION}
 RUN asdf plugin add tfsec \
-  && asdf install tfsec "${TFSEC_VERSION}"
+  && asdf install tfsec "${TFSEC_VERSION}" \
+  && asdf global tfsec "${TFSEC_VERSION}"
 
 # Install sops. Get versions using 'asdf list all sops'
 ARG SOPS_VERSION="3.7.3"
 ENV SOPS_VERSION=${SOPS_VERSION}
 RUN asdf plugin add sops \
-  && asdf install sops "${SOPS_VERSION}"
+  && asdf install sops "${SOPS_VERSION}" \
+  && asdf global sops "${SOPS_VERSION}"
 
 # Install make. Get versions using 'asdf list all make'
 ARG MAKE_VERSION="4.4"
 ENV MAKE_VERSION=${MAKE_VERSION}
 RUN asdf plugin add make \
-  && asdf install make "${MAKE_VERSION}"
+  && asdf install make "${MAKE_VERSION}" \
+  && asdf global make "${MAKE_VERSION}"
 
 # Support tools installed as root when running as any other user
 ENV ASDF_DATA_DIR="/root/.asdf"
