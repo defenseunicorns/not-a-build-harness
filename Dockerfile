@@ -45,7 +45,7 @@ ARG GOLANG_VERSION="1.19.5"
 ENV GOLANG_VERSION=${GOLANG_VERSION}
 RUN asdf plugin add golang \
   && asdf install golang "${GOLANG_VERSION}" \
-  && asdf global golang "${GOLANG_VERSION}" \
+  && asdf global golang "${GOLANG_VERSION}"
 
 # Install golangci-lint. Get versions using 'asdf list all golangci-lint'
 ARG GOLANGCILINT_VERSION="1.50.1"
