@@ -82,6 +82,13 @@ RUN asdf plugin add terraform \
   && asdf install terraform "${TERRAFORM_VERSION}" \
   && asdf global terraform "${TERRAFORM_VERSION}"
 
+# Install terraform-docs. Get versions using 'asdf list all terraform-docs'
+ARG TERRAFORM_DOCS_VERSION="0.16.0"
+ENV TERRAFORM_DOCS_VERSION=${TERRAFORM_DOCS_VERSION}
+RUN asdf plugin add terraform-docs \
+  && asdf install terraform-docs "${TERRAFORM_DOCS_VERSION}" \
+  && asdf global terraform-docs "${TERRAFORM_DOCS_VERSION}"
+
 # Install tflint. Get versions using 'asdf list all tflint'
 ARG TFLINT_VERSION="0.44.1"
 ENV TFLINT_VERSION=${TFLINT_VERSION}
