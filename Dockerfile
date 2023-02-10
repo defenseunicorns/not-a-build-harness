@@ -103,6 +103,13 @@ RUN asdf plugin add tfsec \
   && asdf install tfsec "${TFSEC_VERSION}" \
   && asdf global tfsec "${TFSEC_VERSION}"
 
+# Install checkov. Get versions using 'asdf list all checkov'
+ARG CHECKOV_VERSION="2.3.3"
+ENV CHECKOV_VERSION=${CHECKOV_VERSION}
+RUN asdf plugin add checkov \
+  && asdf install checkov "${CHECKOV_VERSION}" \
+  && asdf global checkov "${CHECKOV_VERSION}"
+
 # Install sops. Get versions using 'asdf list all sops'
 ARG SOPS_VERSION="3.7.3"
 ENV SOPS_VERSION=${SOPS_VERSION}
