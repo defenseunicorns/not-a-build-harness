@@ -22,7 +22,7 @@ jobs:
           tags: |
             type=raw,value=local
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
