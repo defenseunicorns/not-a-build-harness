@@ -124,6 +124,13 @@ RUN asdf plugin add make \
   && asdf install make "${MAKE_VERSION}" \
   && asdf global make "${MAKE_VERSION}"
 
+# Install adr-tools. Get versions using 'asdf list all adr-tools'
+ARG ADR_TOOLS_VERSION="3.0.0"
+ENV ADR_TOOLS_VERSION=${ADR_TOOLS_VERSION}
+RUN asdf plugin add adr-tools \
+  && asdf install adr-tools "${ADR_TOOLS_VERSION}" \
+  && asdf global adr-tools "${ADR_TOOLS_VERSION}"
+
 # Support tools installed as root when running as any other user
 ENV ASDF_DATA_DIR="/root/.asdf"
 
