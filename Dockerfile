@@ -131,6 +131,13 @@ RUN asdf plugin add adr-tools \
   && asdf install adr-tools "${ADR_TOOLS_VERSION}" \
   && asdf global adr-tools "${ADR_TOOLS_VERSION}"
 
+# Install awscli. Get versions using 'asdf list all awscli'
+ARG AWSCLI_VERSION="2.11.0"
+ENV AWSCLI_VERSION=${AWSCLI_VERSION}
+RUN asdf plugin add awscli \
+  && asdf install awscli "${AWSCLI_VERSION}" \
+  && asdf global awscli "${AWSCLI_VERSION}"
+
 # Support tools installed as root when running as any other user
 ENV ASDF_DATA_DIR="/root/.asdf"
 
