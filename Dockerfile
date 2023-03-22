@@ -24,6 +24,7 @@ RUN dnf install -y --refresh \
   perl-Digest-SHA \
   readline-devel \
   sqlite-devel \
+  sshpass \
   unzip \
   wget \
   which \
