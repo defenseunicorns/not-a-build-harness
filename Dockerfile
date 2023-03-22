@@ -3,6 +3,7 @@ FROM rockylinux:9
 # Make all shells run in a safer way. Ref: https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 SHELL [ "/bin/bash", "-euxo", "pipefail", "-c" ]
 
+# Install rpm packages that we need. AWS Session Manager Plugin is not published in any repo that we can use, so we grab it directly from where they publish it in S3.
 # hadolint ignore=DL3041
 RUN dnf install -y --refresh \
   bind-utils \
@@ -13,6 +14,7 @@ RUN dnf install -y --refresh \
   gcc-c++ \
   gettext \
   git \
+  iptables-nft \
   jq \
   libffi-devel \
   libxslt-devel \
@@ -26,6 +28,7 @@ RUN dnf install -y --refresh \
   wget \
   which \
   xz \
+  https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm \
   && dnf clean all \
   && rm -rf /var/cache/yum/
 
