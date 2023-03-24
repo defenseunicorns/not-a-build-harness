@@ -141,6 +141,13 @@ RUN asdf plugin add awscli \
   && asdf install awscli "${AWSCLI_VERSION}" \
   && asdf global awscli "${AWSCLI_VERSION}"
 
+# Install kubectl. Get versions using 'asdf list all kubectl'
+ARG KUBECTL_VERSION="1.26.3"
+ENV KUBECTL_VERSION=${KUBECTL_VERSION}
+RUN asdf plugin add kubectl \
+  && asdf install kubectl "${KUBECTL_VERSION}" \
+  && asdf global kubectl "${KUBECTL_VERSION}"
+
 # Install sshuttle. Get versions by running `pip index versions sshuttle`
 ARG SSHUTTLE_VERSION="1.1.1"
 ENV SSHUTTLE_VERSION=${SSHUTTLE_VERSION}
