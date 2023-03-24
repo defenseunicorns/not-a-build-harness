@@ -141,6 +141,27 @@ RUN asdf plugin add awscli \
   && asdf install awscli "${AWSCLI_VERSION}" \
   && asdf global awscli "${AWSCLI_VERSION}"
 
+# Install kubectl. Get versions using 'asdf list all kubectl'
+ARG KUBECTL_VERSION="1.26.3"
+ENV KUBECTL_VERSION=${KUBECTL_VERSION}
+RUN asdf plugin add kubectl \
+  && asdf install kubectl "${KUBECTL_VERSION}" \
+  && asdf global kubectl "${KUBECTL_VERSION}"
+
+# Install Flux CLI. Get versions using 'asdf list all flux2'
+ARG FLUX_VERSION="0.41.2"
+ENV FLUX_VERSION=${FLUX_VERSION}
+RUN asdf plugin add flux2 \
+  && asdf install flux2 "${FLUX_VERSION}" \
+  && asdf global flux2 "${FLUX_VERSION}"
+
+# Install Helm. Get versions using 'asdf list all helm'
+ARG HELM_VERSION="3.11.2"
+ENV HELM_VERSION=${HELM_VERSION}
+RUN asdf plugin add helm \
+  && asdf install helm "${HELM_VERSION}" \
+  && asdf global helm "${HELM_VERSION}"
+
 # Install sshuttle. Get versions by running `pip index versions sshuttle`
 ARG SSHUTTLE_VERSION="1.1.1"
 ENV SSHUTTLE_VERSION=${SSHUTTLE_VERSION}
