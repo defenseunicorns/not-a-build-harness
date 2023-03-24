@@ -22,6 +22,7 @@ RUN dnf install -y --refresh \
   ncurses-devel \
   openssl-devel \
   perl-Digest-SHA \
+  procps-ng \
   readline-devel \
   sqlite-devel \
   sshpass \
