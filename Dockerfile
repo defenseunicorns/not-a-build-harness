@@ -79,7 +79,7 @@ RUN asdf plugin add pre-commit \
   && asdf global pre-commit "${PRE_COMMIT_VERSION}"
 
 # Install Terraform. Get versions using 'asdf list all terraform'
-ARG TERRAFORM_VERSION="1.3.9"
+ARG TERRAFORM_VERSION="1.4.4"
 ENV TERRAFORM_VERSION=${TERRAFORM_VERSION}
 RUN asdf plugin add terraform \
   && asdf install terraform "${TERRAFORM_VERSION}" \
