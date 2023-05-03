@@ -38,9 +38,9 @@ RUN dnf install -y --refresh \
 
 # Install asdf. Get versions from https://github.com/asdf-vm/asdf/releases
 # hadolint ignore=SC2016
-# renovate: datasource=github-tags depName=asdf-vm/asdf versioning=semver-coerced
-ENV ASDF_VERSION=v0.11.1
-RUN git clone https://github.com/asdf-vm/asdf.git --branch ${ASDF_VERSION} --depth 1 "${HOME}/.asdf" \
+# renovate: datasource=github-tags depName=asdf-vm/asdf
+ENV ASDF_VERSION=0.11.1
+RUN git clone https://github.com/asdf-vm/asdf.git --branch v${ASDF_VERSION} --depth 1 "${HOME}/.asdf" \
   && echo -e '\nsource $HOME/.asdf/asdf.sh' >> "${HOME}/.bashrc" \
   && echo -e '\nsource $HOME/.asdf/asdf.sh' >> "${HOME}/.profile" \
   && source "${HOME}/.asdf/asdf.sh"
