@@ -1,5 +1,7 @@
 FROM rockylinux:9
 
+# Renovate "style" is used for some versioning. See https://docs.renovatebot.com/modules/manager/regex/#advanced-capture
+
 # Make all shells run in a safer way. Ref: https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 SHELL [ "/bin/bash", "-euxo", "pipefail", "-c" ]
 
@@ -36,7 +38,9 @@ RUN dnf install -y --refresh \
 
 # Install asdf. Get versions from https://github.com/asdf-vm/asdf/releases
 # hadolint ignore=SC2016
-RUN git clone --branch v0.11.1 --depth 1 https://github.com/asdf-vm/asdf.git "${HOME}/.asdf" \
+# renovate: datasource=github-tags depName=asdf-vm/asdf versioning=semver-coerced
+ENV ASDF_VERSION=v0.11.1
+RUN git clone https://github.com/asdf-vm/asdf.git --branch ${ASDF_VERSION} --depth 1 "${HOME}/.asdf" \
   && echo -e '\nsource $HOME/.asdf/asdf.sh' >> "${HOME}/.bashrc" \
   && echo -e '\nsource $HOME/.asdf/asdf.sh' >> "${HOME}/.profile" \
   && source "${HOME}/.asdf/asdf.sh"
@@ -52,8 +56,8 @@ RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plu
 RUN asdf install
 
 # Install sshuttle. Get versions by running `pip index versions sshuttle`
-ARG SSHUTTLE_VERSION="1.1.1"
-ENV SSHUTTLE_VERSION=${SSHUTTLE_VERSION}
+# renovate: datasource=pypi depName=sshuttle
+ENV SSHUTTLE_VERSION=1.1.0
 RUN pip install --force-reinstall -v "sshuttle==${SSHUTTLE_VERSION}"
 
 # Support tools installed as root when running as any other user
