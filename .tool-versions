@@ -1,27 +1,27 @@
 # renovate: datasource=github-tags depName=npryce/adr-tools
 adr-tools 3.0.0
-awscli 2.11.0
+awscli 2.11.16
 # renovate: datasource=github-tags depName=bridgecrewio/checkov
 checkov 2.3.3
 # renovate: datasource=github-tags depName=fluxcd/flux2
 flux2 0.41.2
-golang 1.19.5
+golang 1.20.4
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-golangci-lint 1.50.1
+golangci-lint 1.52.2
 # renovate: datasource=github-tags depName=hadolint/hadolint
 hadolint 2.12.0
-helm 3.11.2
+helm 3.11.3
 # renovate: datasource=github-tags depName=kubernetes/kubernetes
-kubectl 1.26.3
+kubectl 1.27.1
 make 4.4
 # renovate: datasource=github-tags depName=pre-commit/pre-commit
-pre-commit 3.0.1
-python 3.11.1
+pre-commit 3.3.1
+python 3.11.3
 sops 3.7.3
-terraform 1.4.4
+terraform 1.4.6
 # renovate: datasource=github-tags depName=terraform-docs/terraform-docs
 terraform-docs 0.16.0
 # renovate: datasource=github-tags depName=terraform-linters/tflint
-tflint 0.44.1
+tflint 0.46.1
 # renovate: datasource=github-tags depName=aquasecurity/tfsec
 tfsec 1.28.1
