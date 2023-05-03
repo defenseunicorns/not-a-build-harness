@@ -50,10 +50,11 @@ ENV PATH="/root/.asdf/shims:/root/.asdf/bin:${PATH}"
 COPY .tool-versions /root/.tool-versions
 
 # Install all ASDF plugins that are present in the .tool-versions file
-RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plugin add  {}
+RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plugin add {}
 
 # Install all ASDF versions that are present in the .tool-versions file
-RUN asdf install
+# Checkov requires python to be installed so we have to make sure that gets installed first
+RUN asdf install python && asdf install
 
 # Install sshuttle. Get versions by running `pip index versions sshuttle`
 # renovate: datasource=pypi depName=sshuttle
