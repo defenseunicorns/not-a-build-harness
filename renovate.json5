@@ -14,8 +14,6 @@
     "replacements:all",
     // Apply crowd-sourced workarounds for known problems with packages. See https://docs.renovatebot.com/presets-workarounds/#workaroundsall
     "workarounds:all",
-    // Only run outside of office hours. See https://docs.renovatebot.com/presets-schedule/#schedulenonofficehours
-    "schedule:nonOfficeHours"
   ],
   // Labels to set in Pull Request. See https://docs.renovatebot.com/configuration-options/#labels
   labels: [
