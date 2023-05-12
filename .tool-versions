@@ -1,6 +1,6 @@
 # renovate: datasource=github-tags depName=npryce/adr-tools
 adr-tools 3.0.0
-awscli 2.11.18
+awscli 2.11.20
 # renovate: datasource=github-tags depName=bridgecrewio/checkov
 checkov 2.3.234
 # renovate: datasource=github-tags depName=fluxcd/flux2
@@ -10,7 +10,7 @@ golang 1.20.4
 golangci-lint 1.52.2
 # renovate: datasource=github-tags depName=hadolint/hadolint
 hadolint 2.12.0
-helm 3.11.3
+helm 3.12.0
 # renovate: datasource=github-tags depName=derailed/k9s
 k9s 0.27.4
 # renovate: datasource=github-tags depName=kubernetes/kubernetes
