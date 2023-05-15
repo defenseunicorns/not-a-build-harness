@@ -49,8 +49,9 @@ ENV PATH="/root/.asdf/shims:/root/.asdf/bin:${PATH}"
 # Copy our .tool-versions file into the container
 COPY .tool-versions /root/.tool-versions
 
-# Install all ASDF plugins that are present in the .tool-versions file
-RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plugin add {}
+# Install all ASDF plugins that are present in the .tool-versions file. Zarf needs to be added separately since it doesn't have a "shortform" option in the asdf registry yet
+RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plugin add {} \
+  && asdf plugin add zarf https://github.com/defenseunicorns/asdf-zarf.git
 
 # Install all ASDF versions that are present in the .tool-versions file
 # Checkov requires python to be installed so we have to make sure that gets installed first
