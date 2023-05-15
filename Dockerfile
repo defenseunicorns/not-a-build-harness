@@ -51,8 +51,8 @@ COPY .tool-versions /root/.tool-versions
 
 # Zarf needs to be added separately since it doesn't have a "shortform" option in the asdf registry yet
 RUN asdf plugin add zarf https://github.com/defenseunicorns/asdf-zarf.git
-# Install all ASDF plugins that are present in the .tool-versions file.
-RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -i asdf plugin add {}
+# Install all other ASDF plugins that are present in the .tool-versions file.
+RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | grep -v "zarf" | xargs -i asdf plugin add {}
 
 # Install all ASDF versions that are present in the .tool-versions file
 # Checkov requires python to be installed so we have to make sure that gets installed first
