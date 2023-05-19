@@ -1,9 +1,7 @@
 name: "Release: Build and push the image on new tag creation"
 
 on:
-  push:
-    tags:
-      - "*"
+  pull_request:
 
 env:
   REGISTRY: ghcr.io
