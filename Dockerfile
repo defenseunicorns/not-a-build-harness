@@ -62,7 +62,6 @@ RUN asdf plugin add zarf https://github.com/defenseunicorns/asdf-zarf.git
 RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | grep -v "zarf" | xargs -i asdf plugin add {}
 
 # Install all ASDF versions that are present in the .tool-versions file
-# Checkov requires python to be installed so we have to make sure that gets installed first
 RUN asdf install
 
 # Install sshuttle. Get versions by running `pip index versions sshuttle`
