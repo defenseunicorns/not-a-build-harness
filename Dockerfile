@@ -31,6 +31,7 @@ RUN ARCH_STRING=$(uname -m) \
     openssl-devel \
     perl-Digest-SHA \
     procps-ng \
+    python3-pip \
     readline-devel \
     sqlite-devel \
     sshpass \
