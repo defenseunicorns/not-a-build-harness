@@ -62,7 +62,7 @@ RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | grep -v "zarf" | 
 
 # Install all ASDF versions that are present in the .tool-versions file
 # Checkov requires python to be installed so we have to make sure that gets installed first
-RUN asdf install python && asdf install
+RUN asdf install
 
 # Install sshuttle. Get versions by running `pip index versions sshuttle`
 # renovate: datasource=pypi depName=sshuttle
