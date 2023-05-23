@@ -27,6 +27,7 @@ RUN ARCH_STRING=$(uname -m) \
     libffi-devel \
     libxslt-devel \
     make \
+    nc \
     ncurses-devel \
     openssl-devel \
     perl-Digest-SHA \
