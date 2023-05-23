@@ -1,5 +1,4 @@
-ARG ARCH=
-FROM ${ARCH}rockylinux:9
+FROM rockylinux:9
 # Renovate "style" is used for some versioning. See https://docs.renovatebot.com/modules/manager/regex/#advanced-capture
 
 # Make all shells run in a safer way. Ref: https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/

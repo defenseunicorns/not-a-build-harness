@@ -1,3 +1,4 @@
+#stolen from here: https://docs.docker.com/build/ci/github-actions/multi-platform/#distribute-build-across-multiple-runners
 name: "Release: Build and push the image on new tag creation"
 
 on:
@@ -46,6 +47,7 @@ jobs:
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=image,name=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }},push-by-digest=true,name-canonical=true,push=true
+          no-cache: true
       - name: Export digest
         run: |
           mkdir -p /tmp/digests
