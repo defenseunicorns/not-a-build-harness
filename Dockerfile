@@ -29,6 +29,7 @@ RUN ARCH_STRING=$(uname -m) \
     make \
     nc \
     ncurses-devel \
+    openldap-clients \
     openssl-devel \
     perl-Digest-SHA \
     procps-ng \
