@@ -1,5 +1,4 @@
 FROM rockylinux:9
-
 # Renovate "style" is used for some versioning. See https://docs.renovatebot.com/modules/manager/regex/#advanced-capture
 
 # Make all shells run in a safer way. Ref: https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
@@ -7,32 +6,41 @@ SHELL [ "/bin/bash", "-euxo", "pipefail", "-c" ]
 
 # Install rpm packages that we need. AWS Session Manager Plugin is not published in any repo that we can use, so we grab it directly from where they publish it in S3.
 # hadolint ignore=DL3041
-RUN dnf install -y --refresh \
-  bind-utils \
-  bzip2 \
-  bzip2-devel \
-  findutils \
-  gcc \
-  gcc-c++ \
-  gettext \
-  git \
-  iptables-nft \
-  jq \
-  libffi-devel \
-  libxslt-devel \
-  make \
-  ncurses-devel \
-  openssl-devel \
-  perl-Digest-SHA \
-  procps-ng \
-  readline-devel \
-  sqlite-devel \
-  sshpass \
-  unzip \
-  wget \
-  which \
-  xz \
-  https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm \
+RUN ARCH_STRING=$(uname -m) \
+  && if [ "$ARCH_STRING" = "x86_64" ]; then \
+      SSM_PLUGIN_URL="https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm"; \
+    elif [ "$ARCH_STRING" = "aarch64" ]; then \
+      SSM_PLUGIN_URL="https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_arm64/session-manager-plugin.rpm"; \
+    fi \
+  && dnf install -y --refresh \
+    bind-utils \
+    bzip2 \
+    bzip2-devel \
+    findutils \
+    gcc \
+    gcc-c++ \
+    gettext \
+    git \
+    iptables-nft \
+    jq \
+    libffi-devel \
+    libxslt-devel \
+    make \
+    nc \
+    ncurses-devel \
+    openldap-clients \
+    openssl-devel \
+    perl-Digest-SHA \
+    procps-ng \
+    python3-pip \
+    readline-devel \
+    sqlite-devel \
+    sshpass \
+    unzip \
+    wget \
+    which \
+    xz \
+  "${SSM_PLUGIN_URL}" \
   && dnf clean all \
   && rm -rf /var/cache/yum/
 
@@ -55,8 +63,7 @@ RUN asdf plugin add zarf https://github.com/defenseunicorns/asdf-zarf.git
 RUN cat /root/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | grep -v "zarf" | xargs -i asdf plugin add {}
 
 # Install all ASDF versions that are present in the .tool-versions file
-# Checkov requires python to be installed so we have to make sure that gets installed first
-RUN asdf install python && asdf install
+RUN asdf install
 
 # Install sshuttle. Get versions by running `pip index versions sshuttle`
 # renovate: datasource=pypi depName=sshuttle
