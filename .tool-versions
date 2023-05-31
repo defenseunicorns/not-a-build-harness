@@ -1,6 +1,6 @@
 # renovate: datasource=github-tags depName=npryce/adr-tools
 adr-tools 3.0.0
-awscli 2.11.21
+awscli 2.11.24
 # renovate: datasource=github-tags depName=bridgecrewio/checkov
 checkov 2.3.234
 # renovate: datasource=github-tags depName=fluxcd/flux2
@@ -26,4 +26,4 @@ tflint 0.46.1
 # renovate: datasource=github-tags depName=aquasecurity/tfsec
 tfsec 1.28.1
 # renovate: datasource=github-tags depName=defenseunicorns/zarf
-zarf 0.26.4
+zarf 0.27.0
